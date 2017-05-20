@@ -1,1 +1,10 @@
-// bind click event to open and close buttons that will add or remove the "open" class to the aside.
+const API_KEY = 'GHtmvSXNIA94h6fHzpAR8qxHQsNYydkHDcXluDQr'
+const ROOT_URL = 'https://api.nasa.gov/planetary/apod'
+
+$('.open-btn').on('click', function() {
+  $('aside').addClass('open');
+})
+
+$('.close-btn').on('click', function() {
+  $('aside').removeClass('open');
+})

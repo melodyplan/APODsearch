@@ -12,7 +12,7 @@
 <body>
   <div class="app">
     <aside>
-      <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+      <button class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored close-btn">
         <i class="material-icons">close</i>
       </button>
       <div class="credits">
@@ -27,13 +27,17 @@
       </div>
     </aside>
     <main>
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored open-btn hidden">
         <i class="material-icons">add</i>
       </button>
-      <section class="row calendar">
-        Calendar here
+      <section class="calendar">
+        <div class="main-image">
+          <div class="current-month">May</div>
+        </div>
+        <div class="current-dates">
+        </div>
       </section>
-      <div class="melody-overlay">
+      <div class="melody-overlay hidden">
         <div class="melody-modal">
           Lightbox here
         </div>

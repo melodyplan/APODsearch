@@ -52,7 +52,6 @@ main {
   background-color: steelblue;
   flex: 1;
   position: relative;
-  background-image: url(https://apod.nasa.gov/apod/image/1705/eso1610a_WLMgalaxy1024.jpg);
   background-position: center center;
   background-size: cover;
 }
@@ -68,4 +67,10 @@ main {
 .current-dates {
   background-color: blanchedalmond;
   flex: 1;
+}
+
+.open-btn {
+  position: absolute;
+  left: 10px;
+  top: 10px;
 }

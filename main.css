@@ -54,6 +54,15 @@ main {
   position: relative;
   background-position: center center;
   background-size: cover;
+  overflow: hidden;
+}
+
+.main-image iframe {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 
 .current-month {

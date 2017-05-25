@@ -1,6 +1,10 @@
 const API_KEY = 'GHtmvSXNIA94h6fHzpAR8qxHQsNYydkHDcXluDQr'
 const ROOT_URL = 'https://api.nasa.gov/planetary/apod'
 
+const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const days = ['Sunday', 'Monday', 'Tuesday', 'Wedesday', 'Thursday', 'Friday', 'Saturday']
+
 
 function main() {
   //extend the fetchMainImage function to be able to take a date as one of its arguments and fetch the correct date image
@@ -29,11 +33,18 @@ function updateMonth() {
 }
 
 function buildCalendar() {
-  const range = moment.range('2017-05-01', '2017-05-31');
-
-  for (let month of range.by('days')) {
-    console.log(month.format('dd'));
+  const month = moment().month();
+  const year = moment().year();
+  const firstOfMonth = moment(`${year}-${month + 1}-1`, 'YYYY-M-D').day();
+  let calendar = [];
+  for (let i = 0; i < daysInMonth[month] + firstOfMonth; i++) {
+    if (i < firstOfMonth) {
+      calendar.push('')
+    } else {
+      calendar.push(i - firstOfMonth + 1)
+    }
   }
+  console.log(calendar)
 }
 
 function eventHandlers() {

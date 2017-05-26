@@ -3,6 +3,7 @@
   height: 100%;
   overflow-x: hidden;
   padding: 10px;
+  background-color: blanchedalmond;
 }
 
 aside {
@@ -13,7 +14,7 @@ aside {
   position: absolute;
   height: 100%;
   width: 250px;
-  background-color: grey;
+  background-color: lightsalmon;
   top: 0;
   left: 0;
   padding: 10px;
@@ -27,6 +28,13 @@ aside.open {
 }
 
 .mdl-button i {
+  color: blanchedalmond;
+}
+
+.open-btn {
+  position: absolute;
+  left: 10px;
+  top: 10px;
   color: white;
 }
 
@@ -45,7 +53,7 @@ main {
   background-color: lightgrey;
   display: flex;
   flex-direction: column;
-  border: 2px solid gray;
+  /*border: 2px solid lightsalmon;*/
 }
 
 .main-image {
@@ -66,20 +74,59 @@ main {
 }
 
 .current-month {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  letter-spacing: 10px;
   font-size: 5em;
   color: white;
   position: absolute;
   bottom: 0;
   left: 10px;
+  text-transform: uppercase;
 }
 
 .current-dates {
-  background-color: blanchedalmond;
+  background-color: white;
   flex: 1;
 }
 
-.open-btn {
-  position: absolute;
-  left: 10px;
-  top: 10px;
+/*test*/
+
+.days-of-week {
+  display: flex;
+  height: 40px;
 }
+
+.weekday {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  color: #F98909;
+  padding: 5px;
+}
+
+.week {
+  display: flex;
+  height: 80px;
+}
+
+.day {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  color: #F98909;
+  padding: 5px;
+  box-shadow:
+    -1px -1px #F9A440,
+    inset -1px -1px 0 0 #F9A440;
+}
+
+
+/*reference: https://codepen.io/LandonSchropp/pen/GJWGrO
+
+.week:first-of-type .day:first-of-type {
+  margin-left: 42.85714%;
+}
+
+.week:last-of-type .day:last-of-type {
+  margin-right: 14.285%;
+}*/

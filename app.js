@@ -4,7 +4,7 @@ const ROOT_URL = 'https://api.nasa.gov/planetary/apod'
 const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wedesday', 'Thursday', 'Friday', 'Saturday']
-
+const imageUrls = ['']
 
 function main() {
   //extend the fetchMainImage function to be able to take a date as one of its arguments and fetch the correct date image
@@ -28,6 +28,22 @@ function fetchMainImage(date) {
     })
 }
 
+function fetchAllImages(month, year) {
+  let $el
+  const promises = $('.week').map(function() {
+    $el = $(this)
+
+    if (!$el.text()) { return }
+    return axios.get(ROOT_URL, {
+      params: {
+        api_key: API_KEY,
+        date: `${year}-${month}-${$el.text()}`
+      }
+    })
+  })
+  Promise.all(promises)
+}
+
 function updateMonth() {
   $('.current-month').text(moment().format('MMM'))
 }
@@ -44,7 +60,14 @@ function buildCalendar() {
       calendar.push(i - firstOfMonth + 1)
     }
   }
-  console.log(calendar)
+  const calendarHtml = calendar.map(function(day) {
+    return `<div class="day">${day}</div>`
+  })
+  while (calendarHtml.length % 7 !== 0) {
+    calendarHtml.push('<div class="day"> </div>')
+  }
+  $('.week').html(calendarHtml)
+  fetchAllImages(month, year)
 }
 
 function eventHandlers() {

@@ -36,6 +36,7 @@ aside.open {
   left: 10px;
   top: 10px;
   color: white;
+  background: lightsalmon !important;
 }
 
 main {
@@ -87,32 +88,31 @@ main {
 .current-dates {
   background-color: white;
   flex: 1;
+  position: relative;
 }
 
 /*test*/
 
 .days-of-week {
   display: flex;
-  height: 40px;
+  min-height: 40px;
+  flex: 1;
 }
 
 .weekday {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
+  flex: 1 1 14.28%;
   color: #F98909;
   padding: 5px;
 }
 
 .week {
   display: flex;
-  height: 80px;
+  flex-wrap: wrap;
+  flex: 9;
 }
 
 .day {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 0;
+  flex: 1 1 14.28%;
   color: #F98909;
   padding: 5px;
   box-shadow:
@@ -120,6 +120,11 @@ main {
     inset -1px -1px 0 0 #F9A440;
 }
 
+.month {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
 
 /*reference: https://codepen.io/LandonSchropp/pen/GJWGrO
 

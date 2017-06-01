@@ -3,7 +3,7 @@
   height: 100%;
   overflow-x: hidden;
   padding: 10px;
-  background-color: blanchedalmond;
+  background-color: black;
 }
 
 aside {
@@ -14,7 +14,7 @@ aside {
   position: absolute;
   height: 100%;
   width: 250px;
-  background-color: lightsalmon;
+  background-color: lightskyblue;
   top: 0;
   left: 0;
   padding: 10px;
@@ -28,7 +28,7 @@ aside.open {
 }
 
 .mdl-button i {
-  color: blanchedalmond;
+  color: white;
 }
 
 .open-btn {
@@ -36,7 +36,7 @@ aside.open {
   left: 10px;
   top: 10px;
   color: white;
-  background: lightsalmon !important;
+  background: #4c4c4c !important;
 }
 
 main {
@@ -44,6 +44,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: black;
 }
 
 .calendar {
@@ -101,8 +102,10 @@ main {
 
 .weekday {
   flex: 1 1 14.28%;
-  color: #F98909;
+  color: white;
   padding: 5px;
+  background-color: black;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .week {
@@ -113,15 +116,17 @@ main {
 
 .day {
   flex: 1 1 14.28%;
-  color: #F98909;
+  color: white;
   font-size: 1.5em;
   padding: 5px;
-  box-shadow:
+  /*box-shadow:
     -1px -1px #F9A440,
-    inset -1px -1px 0 0 #F9A440;
+    inset -1px -1px 0 0 #F9A440;*/
   background-position: center center;
   background-size: cover;
   overflow: hidden;
+  background-color: black;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .month {

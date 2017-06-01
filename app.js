@@ -30,22 +30,45 @@ function fetchMainImage(date) {
 
 function fetchAllImages(month, year) {
   let $el
-  const promises = $('.week').map(function() {
+  const promises = $('.day').map(function() {
     $el = $(this)
 
-    if (!$el.text()) { return }
+    if (!$el.text().trim()) { return false }
     return axios.get(ROOT_URL, {
       params: {
         api_key: API_KEY,
-        date: `${year}-${month}-${$el.text()}`
+        date: `${year}-${month + 1}-${$el.text()}`
       }
     })
-  })
-  Promise.all(promises)
+  }).get()
+  Promise.all(promises.map(reflect))
+    .then(function(results) {
+      $('.day').each(function(index) {
+        if (!results[index]) { return };
+        $(this).attr('style', `background-image: url(${results[index].url}`);
+      })
+    })
 }
 
 function updateMonth() {
   $('.current-month').text(moment().format('MMM'))
+}
+
+function reflect(promise) {
+  if (!promise) {
+    return null
+  }
+  return promise.then(
+    function(response) {
+      return response.data
+
+      // if response.data.media_type === video? => get thumbnail
+    },
+    function(e) {
+      return {
+        url: './errorimage.png'
+      }
+  });
 }
 
 function buildCalendar() {

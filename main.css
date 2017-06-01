@@ -114,10 +114,14 @@ main {
 .day {
   flex: 1 1 14.28%;
   color: #F98909;
+  font-size: 1.5em;
   padding: 5px;
   box-shadow:
     -1px -1px #F9A440,
     inset -1px -1px 0 0 #F9A440;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
 }
 
 .month {

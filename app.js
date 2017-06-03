@@ -4,10 +4,9 @@ const ROOT_URL = 'https://api.nasa.gov/planetary/apod'
 const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wedesday', 'Thursday', 'Friday', 'Saturday']
-const imageUrls = ['']
-
-function main() {
-  //extend the fetchMainImage function to be able to take a date as one of its arguments and fetch the correct date image
+let state = {
+  month: moment().month(),
+  year: moment().year()
 }
 
 function fetchMainImage(date) {
@@ -30,19 +29,23 @@ function fetchMainImage(date) {
 
 function fetchAllImages(month, year) {
   let $el
-  const promises = $('.day').map(function() {
+  const promises = $('.day').map(function(index) {
     $el = $(this)
+    let date = `${year}-${month + 1}-${$el.text()}`
 
     if (!$el.text().trim()) { return false }
+    if ((moment().unix() - moment(date, 'YYYY-M-D').unix() < 0 )) { return false }
+
     return axios.get(ROOT_URL, {
       params: {
         api_key: API_KEY,
-        date: `${year}-${month + 1}-${$el.text()}`
+        date: date
       }
     })
   }).get()
   Promise.all(promises.map(reflect))
     .then(function(results) {
+      state.results = results
       $('.day').each(function(index) {
         if (!results[index]) { return };
         $(this).attr('style', `background-image: url(${results[index].url}`);
@@ -50,8 +53,11 @@ function fetchAllImages(month, year) {
     })
 }
 
-function updateMonth() {
-  $('.current-month').text(moment().format('MMM'))
+function updateMonth(date) {
+  if (date) {
+    return $('.current-month').text(moment(date).format('MMM'))
+  }
+  return $('.current-month').text(moment().format('MMM'))
 }
 
 function reflect(promise) {
@@ -65,15 +71,13 @@ function reflect(promise) {
       // if response.data.media_type === video? => get thumbnail
     },
     function(e) {
-      return {
-        url: './errorimage.png'
-      }
+      return
   });
 }
 
 function buildCalendar() {
-  const month = moment().month();
-  const year = moment().year();
+  const month = state.month
+  const year = state.year
   const firstOfMonth = moment(`${year}-${month + 1}-1`, 'YYYY-M-D').day();
   let calendar = [];
   for (let i = 0; i < daysInMonth[month] + firstOfMonth; i++) {
@@ -91,6 +95,8 @@ function buildCalendar() {
   }
   $('.week').html(calendarHtml)
   fetchAllImages(month, year)
+  fetchMainImage()
+  updateMonth()
 }
 
 function eventHandlers() {
@@ -101,12 +107,35 @@ function eventHandlers() {
   $('.close-btn').on('click', function() {
     $('aside').removeClass('open');
   })
+
+  $('.back-btn').on('click', function() {
+    state.month = state.month - 1
+    buildCalendar()
+  })
+}
+
+function thumbnailClickHandler() {
+  $('.week').on('click', '.day', function() {
+    const index = $(this).index()
+    const data = state.results[index]
+    if (!data) { return }
+    $('.modal-image').attr('style', `background-image: url(${data.hdurl}`)
+    $('.modal-explanation').text(data.explanation)
+    $('.melody-overlay').removeClass('hidden')
+  })
+}
+
+function overlayClickHandler() {
+  $('.melody-overlay').on('click', function() {
+    $('.melody-overlay').addClass('hidden')
+    var videoSource = $('.melody-overlay').find('iframe').attr('src')
+    $('.melody-overlay').find('iframe').attr('src', videoSource)
+  })
 }
 
 $(document).ready(function() {
   eventHandlers();
-  fetchMainImage();
-  updateMonth();
   buildCalendar();
-  main();
+  thumbnailClickHandler();
+  overlayClickHandler();
 })

@@ -16,7 +16,14 @@
         <i class="material-icons">close</i>
       </button>
       <div class="credits">
-        <p>Search by date: <a href="#">[insert date picker]</a></p>
+        <h3>How to use this app</h3>
+        <p>
+          I built this app because I really enjoy space and the Astronomy Picture of the Day site
+          does not have a browse by photo option. I wanted an app that spoke for itself, is functional (dynamically changing calendar),
+          minimalist, and appealing enough people would want to set it as their homepage.
+        </p>
+        <hr>
+        <!-- <p>Search by date: <a href="#">[insert date picker]</a></p> -->
         <p>"Aliens might be surprised to learn that in a cosmos w/ limitless starlight, humans kill for energy sources buried in the sand" <br>-- <i>Neil deGrasse Tyson</i></p>
         <p>Made by <a href="https://github.com/melodyplan">Melody Plan
           <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
@@ -30,10 +37,13 @@
       <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored open-btn">
         <i class="material-icons">add</i>
       </button>
+      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored back-btn">
+        <i class="material-icons">delete</i>
+      </button>
       <section class="calendar">
-        <div class="main-image" style="background-image: url(https://apod.nasa.gov/apod/image/1705/eso1610a_WLMgalaxy1024.jpg)">
+        <div class="main-image" style="background-image: url(https://apod.nasa.gov/apod/image/1705/Hickson90_Czernetz_960.jpg)">
           <iframe class="hidden" width="960" height="540" src="https://www.youtube.com/embed/x_UaOhvLUYA" frameborder="0" allowfullscreen></iframe>
-          <div class="current-month">January</div>
+          <div class="current-month"><!-- January --></div>
         </div>
         <div class="current-dates">
           <div class="month">
@@ -88,7 +98,8 @@
       </section>
       <div class="melody-overlay hidden">
         <div class="melody-modal">
-          Lightbox here (make sure that the video description still comes up if it is clicked? ex. 5/24/2017)
+          <div class="modal-image"></div>
+          <div class="modal-explanation"></div>
         </div>
       </div>
     </main>

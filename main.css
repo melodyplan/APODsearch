@@ -75,6 +75,51 @@ main {
   transform: translateY(-50%);
 }
 
+.melody-modal {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 90%;
+  max-width: 900px;
+  padding: 10px;
+  background-color: black;
+  border-radius: 5px;
+}
+
+.modal-image {
+  background-color: black;
+  width: 100%;
+  flex: 5;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.modal-explanation {
+  background-color: black;
+  color: lightgrey;
+  width: 100%;
+  flex: 2;
+  padding: 10px;
+  text-align: justify;
+  line-height: 1.6em;
+  letter-spacing: 0.1em;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.melody-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .current-month {
   font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
   letter-spacing: 10px;
@@ -119,9 +164,10 @@ main {
   color: white;
   font-size: 1.5em;
   padding: 5px;
-  /*box-shadow:
+  cursor: pointer;
+  box-shadow:
     -1px -1px #F9A440,
-    inset -1px -1px 0 0 #F9A440;*/
+    inset -1px -1px 0 0 #F9A440;
   background-position: center center;
   background-size: cover;
   overflow: hidden;

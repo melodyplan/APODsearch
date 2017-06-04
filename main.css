@@ -27,9 +27,9 @@ aside.open {
   transform: translateX(0);
 }
 
-.mdl-button i {
+/*.mdl-button i {
   color: white;
-}
+}*/
 
 .open-btn {
   position: absolute;
@@ -37,6 +37,20 @@ aside.open {
   top: 10px;
   color: white;
   background: #4c4c4c !important;
+}
+
+.back-btn {
+  position: absolute;
+  left: 215px;
+  /*color: #F9A440;*/
+  background: black !important;
+  /*font-size: 20em;*/
+}
+
+.forward-btn {
+  position: absolute;
+  right: 215px;
+  background: black !important;
 }
 
 main {
@@ -106,6 +120,7 @@ main {
   letter-spacing: 0.1em;
   max-height: 200px;
   overflow-y: auto;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 }
 
 .melody-overlay {

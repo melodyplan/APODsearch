@@ -112,6 +112,11 @@ function eventHandlers() {
     state.month = state.month - 1
     buildCalendar()
   })
+
+  $('.forward-btn').on('click', function() {
+    state.month = state.month + 1
+    buildCalendar()
+  })
 }
 
 function thumbnailClickHandler() {

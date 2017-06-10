@@ -97,7 +97,7 @@ main {
   max-width: 900px;
   padding: 10px;
   background-color: black;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .modal-image {
@@ -146,6 +146,16 @@ main {
   text-transform: uppercase;
 }
 
+.current-year {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  letter-spacing: 10px;
+  font-size: 14px;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+}
+
 .current-dates {
   background-color: white;
   flex: 1;
@@ -181,8 +191,8 @@ main {
   padding: 5px;
   cursor: pointer;
   box-shadow:
-    -1px -1px #F9A440,
-    inset -1px -1px 0 0 #F9A440;
+    -1px -1px steelblue,
+    inset -1px -1px 0 0 steelblue;
   background-position: center center;
   background-size: cover;
   overflow: hidden;

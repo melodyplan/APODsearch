@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
   <title>Astronomy Picture of the Day - Browse by Picture</title>
@@ -19,8 +20,9 @@
         <h3>About</h3>
         <p>
           I built this app because I love space and the Astronomy Picture of the Day site
-          does not have a browse by photo option. I wanted an app that spoke for itself, is functional (dynamically changing calendar),
-          minimalist, and appealing enough people would want to set it as their homepage.
+          does not have an option to browse by photo. I wanted an app that spoke for itself,
+          is functional (dynamically changing calendar), minimalist, and visually appealing
+          enough that people would want to set it as their homepage.
         </p>
         <hr>
         <!-- <p>Search by date: <a href="#">[insert date picker]</a></p> -->
@@ -38,15 +40,26 @@
         <i class="material-icons">add</i>
       </button>
       <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored back-btn">
-        <i class="material-icons"><</i>
+        <i class="material-icons">
+          <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
+              <path d="M0-.5h24v24H0z" fill="none"/>
+          </svg>
+        </i>
       </button>
       <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored forward-btn">
-        <i class="material-icons">></i>
+        <i class="material-icons">
+          <svg fill="#ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
+              <path d="M0-.25h24v24H0z" fill="none"/>
+          </svg>
+        </i>
       </button>
       <section class="calendar">
         <div class="main-image" style="background-image: url(https://apod.nasa.gov/apod/image/1705/Hickson90_Czernetz_960.jpg)">
           <iframe class="hidden" width="960" height="540" src="https://www.youtube.com/embed/x_UaOhvLUYA" frameborder="0" allowfullscreen></iframe>
           <div class="current-month"><!-- January --></div>
+          <div class="current-year"></div>
         </div>
         <div class="current-dates">
           <div class="month">

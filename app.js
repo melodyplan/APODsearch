@@ -163,7 +163,7 @@ function thumbnailClickHandler() {
     const data = state.results[index]
     if (!data) { return }
     if (data.media_type === 'image') {
-      $('.modal-image').attr('style', `background-image: url(${data.hdurl}`).html('')
+      $('.modal-image').attr('style', `background-image: url(${data.url}`).html('')
     } else if (data.media_type === 'video') {
       $('.modal-image').html(`<iframe width="960" height="540" src="${data.url}" frameborder="0" allowfullscreen></iframe>`)
     }

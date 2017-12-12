@@ -13,6 +13,8 @@ Astronomy Picture of the Day Calendar is a calendar that uses NASA's Astronomy P
 
 This is a refreshing take on NASA's Astronomy Picture of the Day website that veteran visitors to the site will appreciate. It acts as an educational and aesthetically appealing tool that works well as a homepage, or just something space lovers can visit and browse at their leisure.
 
+Mark this as a homepage calendar as it refreshes with a new image or video every day.
+
 ## How to Use ##
 ![screenshot of app](http://i.imgur.com/t4MIrmz.png)
 

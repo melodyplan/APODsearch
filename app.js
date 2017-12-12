@@ -1,14 +1,35 @@
-const API_KEY = 'GHtmvSXNIA94h6fHzpAR8qxHQsNYydkHDcXluDQr'
-const ROOT_URL = 'https://api.nasa.gov/planetary/apod'
+const API_KEY = 'GHtmvSXNIA94h6fHzpAR8qxHQsNYydkHDcXluDQr';
+const ROOT_URL = 'https://api.nasa.gov/planetary/apod';
 
-const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-const days = ['Sunday', 'Monday', 'Tuesday', 'Wedesday', 'Thursday', 'Friday', 'Saturday']
+const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+];
+const days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wedesday',
+  'Thursday',
+  'Friday',
+  'Saturday'
+];
 let state = {
   month: moment().month() + 1,
   year: moment().year()
-}
-console.log(state)
+};
+console.log(state);
 var youtube_URL = 'https://www.googleapis.com/youtube/v3/search';
 
 function getDataFromApi(query) {
@@ -18,11 +39,12 @@ function getDataFromApi(query) {
       key: 'AIzaSyABEG1EiZyTt2kxzYWbcU2Nhka23N538Sg',
       q: query
     }
-  })
+  });
 }
 
 function fetchMainImage(date) {
-  axios.get(ROOT_URL, {
+  axios
+    .get(ROOT_URL, {
       params: {
         api_key: API_KEY,
         date: date //as long as you change the paramater by yyyy-mm-dd and pass it through fetchMainImage as a parameter it should be good to go
@@ -30,66 +52,89 @@ function fetchMainImage(date) {
     })
     .then(function(response) {
       if (response.data.media_type === 'image') {
-        $('.main-image').attr('style', `background-image: url(${response.data.url}`);
+        $('.main-image').attr(
+          'style',
+          `background-image: url(${response.data.url}`
+        );
         $('.main-image iframe').addClass('hidden');
       } else if (response.data.media_type === 'video') {
         $('.main-image iframe').attr('src', response.data.url);
         $('.main-image iframe').removeClass('hidden');
       }
-    })
+    });
 }
 
 function fetchAllImages() {
-  let $el
-  const promises = $('.day').map(function(index) {
-    $el = $(this)
-    let date = `${state.year}-${state.month}-${$el.text()}`
+  let $el;
+  const promises = $('.day')
+    .map(function(index) {
+      $el = $(this);
+      let date = `${state.year}-${state.month}-${$el.text()}`;
 
-    if (!$el.text().trim()) { return false }
-    if ((moment().unix() - moment(date, 'YYYY-M-D').unix() < 0 )) { return false }
-
-    return axios.get(ROOT_URL, {
-      params: {
-        api_key: API_KEY,
-        date: date
+      if (!$el.text().trim()) {
+        return false;
       }
-    })
-  }).get()
-  Promise.all(promises.map(reflect))
-    .then(function(results) {
-      state.results = results
-      $('.day').each(function(index) {
-        if (!results[index]) { return };
-        if (results[index].media_type === 'image') {
-          $(this).attr('style', `background-image: url(${results[index].url}`)
-        } else if (results[index].media_type === 'video') {
-          console.log(results[index].url)
-          $(this).attr('style', `background-image: url('https://img.youtube.com/vi/${results[index].url.split('/')[4].split('?')[0]}/0.jpg'`)
+      if (moment().unix() - moment(date, 'YYYY-M-D').unix() < 0) {
+        return false;
+      }
+
+      return axios.get(ROOT_URL, {
+        params: {
+          api_key: API_KEY,
+          date: date
         }
-      })
+      });
     })
+    .get();
+  Promise.all(promises.map(reflect)).then(function(results) {
+    state.results = results;
+    $('.day').each(function(index) {
+      if (!results[index]) {
+        return;
+      }
+      if (results[index].media_type === 'image') {
+        $(this).attr('style', `background-image: url(${results[index].url}`);
+      } else if (results[index].media_type === 'video') {
+        console.log(results[index].url);
+        $(this).attr(
+          'style',
+          `background-image: url('https://img.youtube.com/vi/${
+            results[index].url.split('/')[4].split('?')[0]
+          }/0.jpg'`
+        );
+      }
+    });
+  });
 }
 
 function updateMonth(date) {
-  return $('.current-month').text(moment(`${state.year}-${state.month}-1`, 'YYYY-M-D').format('MMM'))
+  return $('.current-month').text(
+    //used to be     moment(`${state.year}-${state.month}-1`, 'YYYY-M-D').format('MMM')
+    moment(`${state.year}-${state.month}`, 'YYYY-M-D').format('MMM')
+  );
 }
 
 function nextMonth(date) {
-  state.month ++
-  buildCalendar()
+  //need to handle this so next year's dates work as well
+  /*  let thisYear = moment().year();
+  if (moment().month('January')) {
+    return thisYear++;
+  }
+*/
+  state.month++;
+  buildCalendar();
 }
 
 function prevMonth(date) {
-  state.month --
-  buildCalendar()
+  state.month--;
+  buildCalendar();
 }
-
 
 function updateYear(date) {
   if (date) {
-    return $('.current-year').text(moment(date).format('YYYY'))
+    return $('.current-year').text(moment(date).format('YYYY'));
   }
-  return $('.current-year').text(moment().format('YYYY'))
+  return $('.current-year').text(moment().format('YYYY'));
 }
 
 // function previousMonth(date) {
@@ -100,84 +145,100 @@ function updateYear(date) {
 
 function reflect(promise) {
   if (!promise) {
-    return null
+    return null;
   }
   return promise.then(
     function(response) {
-      return response.data
+      return response.data;
 
       // if response.data.media_type === video? => get thumbnail
     },
     function(e) {
-      return
-  });
+      return;
+    }
+  );
 }
 
 function buildCalendar() {
-  const year = state.year
-  const firstOfMonth = moment(`${state.year}-${state.month}-1`, 'YYYY-M-D').day();
+  const year = state.year;
+  const firstOfMonth = moment(
+    `${state.year}-${state.month}-1`,
+    'YYYY-M-D'
+  ).day();
   let calendar = [];
-  for (let i = 0; i < daysInMonth[state.month] + firstOfMonth; i++) {
+  for (let i = 0; i < daysInMonth[state.month - 1] + firstOfMonth; i++) {
     if (i < firstOfMonth) {
-      calendar.push('')
+      calendar.push('');
     } else {
-      calendar.push(i - firstOfMonth + 1)
+      calendar.push(i - firstOfMonth + 1);
     }
   }
   const calendarHtml = calendar.map(function(day) {
-    return `<div class="day">${day}</div>`
-  })
+    return `<div class="day">${day}</div>`;
+  });
   while (calendarHtml.length % 7 !== 0) {
-    calendarHtml.push('<div class="day"> </div>')
+    calendarHtml.push('<div class="day"> </div>');
   }
-  $('.week').html(calendarHtml)
-  fetchAllImages()
-  fetchMainImage()
-  updateMonth()
-  updateYear()
+  $('.week').html(calendarHtml);
+  fetchAllImages();
+  fetchMainImage();
+  updateMonth();
+  updateYear();
 }
 
 function eventHandlers() {
   $('.open-btn').on('click', function() {
     $('aside').addClass('open');
-  })
+  });
 
   $('.close-btn').on('click', function() {
     $('aside').removeClass('open');
-  })
+  });
 
   $('.back-btn').on('click', function() {
-    prevMonth()
-    buildCalendar()
-  })
+    prevMonth();
+    buildCalendar();
+  });
 
   $('.forward-btn').on('click', function() {
-    nextMonth()
-    buildCalendar()
-  })
+    nextMonth();
+    buildCalendar();
+  });
 }
 
 function thumbnailClickHandler() {
   $('.week').on('click', '.day', function() {
-    const index = $(this).index()
-    const data = state.results[index]
-    if (!data) { return }
-    if (data.media_type === 'image') {
-      $('.modal-image').attr('style', `background-image: url(${data.url}`).html('')
-    } else if (data.media_type === 'video') {
-      $('.modal-image').html(`<iframe width="960" height="540" src="${data.url}" frameborder="0" allowfullscreen></iframe>`)
+    const index = $(this).index();
+    const data = state.results[index];
+    if (!data) {
+      return;
     }
-    $('.modal-explanation').text(data.explanation)
-    $('.melody-overlay').removeClass('hidden')
-  })
+    if (data.media_type === 'image') {
+      $('.modal-image')
+        .attr('style', `background-image: url(${data.url}`)
+        .html('');
+    } else if (data.media_type === 'video') {
+      $('.modal-image').html(
+        `<iframe width="960" height="540" src="${
+          data.url
+        }" frameborder="0" allowfullscreen></iframe>`
+      );
+    }
+    $('.modal-explanation').text(data.explanation);
+    $('.melody-overlay').removeClass('hidden');
+  });
 }
 
 function overlayClickHandler() {
   $('.melody-overlay').on('click', function() {
-    $('.melody-overlay').addClass('hidden')
-    var videoSource = $('.melody-overlay').find('iframe').attr('src')
-    $('.melody-overlay').find('iframe').attr('src', videoSource)
-  })
+    $('.melody-overlay').addClass('hidden');
+    var videoSource = $('.melody-overlay')
+      .find('iframe')
+      .attr('src');
+    $('.melody-overlay')
+      .find('iframe')
+      .attr('src', videoSource);
+  });
 }
 
 $(document).ready(function() {
@@ -185,4 +246,4 @@ $(document).ready(function() {
   buildCalendar();
   thumbnailClickHandler();
   overlayClickHandler();
-})
+});

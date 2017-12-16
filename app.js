@@ -115,12 +115,6 @@ function updateMonth(date) {
 }
 
 function nextMonth(date) {
-  //need to handle this so next year's dates work as well
-  /*  let thisYear = moment().year();
-  if (moment().month('January')) {
-    return thisYear++;
-  }
-*/
   state.month++;
   buildCalendar();
 }
@@ -172,6 +166,12 @@ function buildCalendar() {
     } else {
       calendar.push(i - firstOfMonth + 1);
     }
+  }
+  //fix lines 171-175 possibly on Jan 1 2018
+  if (state.month >= 12) {
+    $('.forward-btn').hide();
+  } else {
+    $('.forward-btn').show();
   }
   const calendarHtml = calendar.map(function(day) {
     return `<div class="day">${day}</div>`;

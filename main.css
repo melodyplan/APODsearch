@@ -234,7 +234,7 @@ main {
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 100%;
 }
 
 /*reference: https://codepen.io/LandonSchropp/pen/GJWGrO

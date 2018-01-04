@@ -81,7 +81,6 @@ main {
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
   margin-bottom: 10px;
   /*border: 2px solid lightsalmon;*/
 }

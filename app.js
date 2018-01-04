@@ -170,10 +170,13 @@ function buildCalendar() {
   //fix lines 171-175 possibly on Jan 1 2018
   if (state.month >= 12) {
     $('.forward-btn').hide();
-  } else (state.month <= 1) {
-    $('.back-btn').hide();
-  } else if {
+  } else {
     $('.forward-btn').show();
+  }
+  if (state.month <= 1) {
+    $('.back-btn').hide();
+  } else {
+    $('.back-btn').show();
   }
   const calendarHtml = calendar.map(function(day) {
     return `<div class="day">${day}</div>`;

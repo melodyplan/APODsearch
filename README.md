@@ -23,7 +23,9 @@ Mark this as a homepage calendar as it refreshes with a new image or video every
 1. The main image features the current Astronomy Picture of the Day.
 2. Click on the thumbnails to open up a larger HD image and description of the photo. Alternatively, if a video opens, you can play it directly on the site as well. Click anywhere outside of the image and description to close.
 3. Click the navigation buttons on either side of the calendar to navigate to previous or future months.
+
 * **_Important_: NASA's Astronomy Picture of the Day API and this app functions like an advent calendar. It only provides photos for the current date and dates prior to it, so dates that have not passed yet will have no image displayed.**
+
 4. Click the + button to open the About section and credits.
 
 ## Tech

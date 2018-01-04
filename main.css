@@ -8,6 +8,10 @@
 
 aside {
   z-index: 3;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -55,6 +59,10 @@ aside.open {
 
 main {
   height: 100%;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,6 +75,10 @@ main {
   max-width: 800px;
   width: 100%;
   background-color: lightgrey;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
@@ -91,6 +103,10 @@ main {
 }
 
 .melody-modal {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   height: 80%;
@@ -121,7 +137,7 @@ main {
   letter-spacing: 0.1em;
   max-height: 200px;
   overflow-y: auto;
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 
 .melody-overlay {
@@ -130,14 +146,18 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .current-month {
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
   letter-spacing: 10px;
   font-size: 5em;
   color: white;
@@ -148,7 +168,7 @@ main {
 }
 
 .current-year {
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
   letter-spacing: 10px;
   font-size: 14px;
   color: white;
@@ -166,6 +186,10 @@ main {
 /*test*/
 
 .days-of-week {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   min-height: 40px;
   flex: 1;
@@ -176,10 +200,14 @@ main {
   color: white;
   padding: 5px;
   background-color: black;
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 
 .week {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-wrap: wrap;
   flex: 9;
@@ -191,17 +219,19 @@ main {
   font-size: 1.5em;
   padding: 5px;
   cursor: pointer;
-  box-shadow:
-    -1px -1px steelblue,
-    inset -1px -1px 0 0 steelblue;
+  box-shadow: -1px -1px steelblue, inset -1px -1px 0 0 steelblue;
   background-position: center center;
   background-size: cover;
   overflow: hidden;
   background-color: black;
-  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 }
 
 .month {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   height: 50%;

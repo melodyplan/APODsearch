@@ -183,10 +183,6 @@ main {
   position: relative;
 }
 
-.current-dates div {
-  flex: 1;
-}
-
 /*test*/
 
 .days-of-week {
@@ -238,7 +234,7 @@ main {
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 50vh;
 }
 
 /*reference: https://codepen.io/LandonSchropp/pen/GJWGrO

@@ -8,6 +8,8 @@
 
 * [Tech](#tech)
 
+* [Demo](#demo)
+
 ## Introduction
 
 Astronomy Picture of the Day Calendar is a calendar that uses NASA's Astronomy Picture of the Day API in a minimalist and functional way, without compromising the integrity of space's beauty NASA's APOD API brings us.
@@ -36,3 +38,7 @@ Mark this as a homepage calendar as it refreshes with a new image or video every
 * jQuery
 * Moment.js
 * Axios
+
+## Demo
+
+Visit https://melodyplan.github.io/APODsearch/ to see the app in action.
